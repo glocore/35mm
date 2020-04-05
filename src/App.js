@@ -32,9 +32,12 @@ function App() {
 
   const getGenres = async () => {
     const data = await fetchGenres();
-    setGenres(data);
-    setLoadingPage(false);
 
+    if(data){
+      setGenres(data);
+      setLoadingPage(false);
+    }
+    
     return data;
   };
 
@@ -116,7 +119,7 @@ function App() {
       });
   }, []);
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div className={styles["empty-page"]}>{error}</div>;
 
   return (
     <div>
