@@ -3,7 +3,31 @@
   display: flex;
   overflow-x: auto;
 }
+
 .slide {
   flex-shrink: 0;
   height: 100%;
+  padding: 0 5px;
+}
+
+.slide:first-child {
+  padding-left: 0;
+}
+
+.slide:last-child {
+  padding-right: 0;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.3);
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.5);
 }
