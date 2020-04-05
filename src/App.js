@@ -69,29 +69,28 @@ function App() {
   };
 
   const updateFavourites = (movie) => {
-    const { genreId, id } = movie
-    const updatedMovieList = movies[genreId]
-    const index = updatedMovieList.findIndex(item => item.id === id)
+    const { genreId, id } = movie;
+    const updatedMovieList = movies[genreId];
+    const index = updatedMovieList.findIndex((item) => item.id === id);
 
-    const isFavourite = updatedMovieList[index].isFavourite
-    updatedMovieList[index].isFavourite = !isFavourite
+    const isFavourite = updatedMovieList[index].isFavourite;
+    updatedMovieList[index].isFavourite = !isFavourite;
 
-    
     setMovies({
       ...movies,
-      [genreId]: updatedMovieList
-    })
+      [genreId]: updatedMovieList,
+    });
 
-    if(isFavourite) {
-      setFavouritesList(favouritesList.filter(value => value.id !== id))
+    if (isFavourite) {
+      setFavouritesList(favouritesList.filter((value) => value.id !== id));
     } else {
-      setFavouritesList([...favouritesList, movie])
+      setFavouritesList([...favouritesList, movie]);
     }
 
     setFavouritesMap({
       ...favouritesMap,
-      [id]: !isFavourite
-    })
+      [id]: !isFavourite,
+    });
   };
 
   React.useEffect(() => {
@@ -105,13 +104,10 @@ function App() {
 
   if (error) return <div>{error}</div>;
 
-  console.log(favouritesList)
-  console.log(favouritesMap)
-
   return (
     <div>
       {loadingPage ? (
-        "loadingPage"
+        <div className={styles["empty-page"]}>Loading...</div>
       ) : (
         <>
           <header>
@@ -125,7 +121,11 @@ function App() {
                 onThumbnailClick={updateFavourites}
               />
             ) : (
-              "Nothing here. Click on a movie to add to favourites."
+              <div className={styles["empty-thumbstrip"]}>
+                <span>
+                  Nothing here. Click on a movie to add to favourites.
+                </span>
+              </div>
             )}
           </div>
           {genres.map((genre, index) => (
@@ -137,7 +137,9 @@ function App() {
                   onThumbnailClick={updateFavourites}
                 />
               ) : (
-                "loading"
+                <div className={styles["empty-thumbstrip"]}>
+                  <span>Loading...</span>
+                </div>
               )}
             </div>
           ))}
