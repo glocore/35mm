@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Thumbnail.module.css";
-import {ReactComponent as AddIcon } from "../assets/add_icon.svg"
-import {ReactComponent as RemoveIcon } from "../assets/remove_icon.svg"
+import {ReactComponent as AddIcon } from "assets/add_icon.svg"
+import {ReactComponent as RemoveIcon } from "assets/remove_icon.svg"
 
 const Thumbnail = ({ imageUrl, title, isFavourite, onClick }) => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import Thumbnail from "./Thumbnail";
-import movieThumbnail from "../mockData/movie_thumbnail.jpg";
+import Thumbnail from "./";
+import movieThumbnail from "mockData/movie_thumbnail.jpg";
 
 export default {
   title: 'Thumbnail',

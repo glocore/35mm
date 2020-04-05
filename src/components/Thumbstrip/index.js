@@ -1,5 +1,5 @@
 import React from "react";
-import Thumbnail from "./Thumbnail";
+import Thumbnail from "components/Thumbnail";
 import styles from "./Thumbstrip.module.css";
 
 const Thumbstrip = ({ movies }) => {

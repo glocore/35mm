@@ -1,7 +1,7 @@
 import React from 'react';
-import Thumbstrip from "./Thumbstrip";
-import { buildThumbnailUrl } from "../services/tmdbService"
-import mockDiscoverMovieData from "../mockData/discover_movie_action.json";
+import Thumbstrip from "./";
+import { buildThumbnailUrl } from "services/tmdbService"
+import mockDiscoverMovieData from "mockData/discover_movie_action.json";
 
 export default {
   title: 'Thumbstrip',
