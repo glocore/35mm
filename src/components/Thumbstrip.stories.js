@@ -1,36 +1,22 @@
 import React from 'react';
 import Thumbstrip from "./Thumbstrip";
-import movieThumbnail from "../mockData/movie_thumbnail.jpg";
+import { buildThumbnailUrl } from "../services/tmdbService"
+import mockDiscoverMovieData from "../mockData/discover_movie_action.json";
 
 export default {
   title: 'Thumbstrip',
   component: Thumbstrip,
 };
 
+const mockThumbstripData = mockDiscoverMovieData.results.map(result => ({
+  thumbnail: buildThumbnailUrl(result.backdrop_path),
+  title: result.title
+}))
+
 export const ToStorybook = () => (
   <>
     <Thumbstrip 
-    movies={[{
-      thumbnail: movieThumbnail,
-      title: "John Wick",
-      overview: "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him." 
-    }, {
-      thumbnail: movieThumbnail,
-      title: "John Wick",
-      overview: "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him." 
-    }, {
-      thumbnail: movieThumbnail,
-      title: "John Wick",
-      overview: "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him." 
-    }, {
-      thumbnail: movieThumbnail,
-      title: "John Wick",
-      overview: "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him." 
-    }, {
-      thumbnail: movieThumbnail,
-      title: "John Wick",
-      overview: "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him." 
-    }]}/>
+    movies={mockThumbstripData}/>
   </>
 );
 
