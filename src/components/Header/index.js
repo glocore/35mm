@@ -11,7 +11,8 @@ const Header = ({ backdropImages }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000
+    autoplaySpeed: 5000,
+    arrows: false
   };
 
   return (
@@ -24,7 +25,7 @@ const Header = ({ backdropImages }) => {
         ))}
       </Slider>
       <div className={styles.overlay}>
-        <h1>35 MM</h1>
+        <h1>35<br/>MM</h1>
       </div>
     </div>
   );
