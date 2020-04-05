@@ -2,6 +2,7 @@ import React from "react";
 import { debounce } from "lodash-es";
 import Header from "components/Header";
 import Thumbstrip from "components/Thumbstrip";
+import { readStore, writeStore } from "services/storageService"
 import styles from "./App.module.css";
 import {
   buildBackdropUrl,
@@ -16,8 +17,18 @@ function App() {
   const [genres, setGenres] = React.useState(null);
   const [movies, setMovies] = React.useState({});
   const [backdropImages, setBackdropImages] = React.useState([]);
-  const [favouritesList, setFavouritesList] = React.useState([]);
-  const [favouritesMap, setFavouritesMap] = React.useState({});
+  const [favouritesList, setFavouritesList] = React.useState(readStore("favouritesList") || []);
+  const [favouritesMap, setFavouritesMap] = React.useState(readStore("favouritesMap") || {});
+  
+  const updateFavouritesList = (data) => {
+    setFavouritesList(data)
+    writeStore("favouritesList", data)
+  }
+
+  const updateFavouritesMap = (data) => {
+    setFavouritesMap(data)
+    writeStore("favouritesMap", data)
+  }
 
   const getGenres = async () => {
     const data = await fetchGenres();
@@ -71,23 +82,26 @@ function App() {
   const updateFavourites = (movie) => {
     const { genreId, id } = movie;
     const updatedMovieList = movies[genreId];
-    const index = updatedMovieList.findIndex((item) => item.id === id);
+    const index = updatedMovieList?.findIndex((item) => item.id === id);
+    const isFavourite = updatedMovieList?.[index].isFavourite;
 
-    const isFavourite = updatedMovieList[index].isFavourite;
-    updatedMovieList[index].isFavourite = !isFavourite;
-
-    setMovies({
-      ...movies,
-      [genreId]: updatedMovieList,
-    });
-
-    if (isFavourite) {
-      setFavouritesList(favouritesList.filter((value) => value.id !== id));
-    } else {
-      setFavouritesList([...favouritesList, movie]);
+    if(index > -1) {
+      updatedMovieList[index].isFavourite = !isFavourite;
+  
+      setMovies({
+        ...movies,
+        [genreId]: updatedMovieList,
+      });
     }
 
-    setFavouritesMap({
+
+    if (isFavourite) {
+      updateFavouritesList(favouritesList.filter((value) => value.id !== id));
+    } else {
+      updateFavouritesList([...favouritesList, movie]);
+    }
+
+    updateFavouritesMap({
       ...favouritesMap,
       [id]: !isFavourite,
     });
