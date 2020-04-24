@@ -1,15 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 35mm
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg?style=flat-square)](https://lerna.js.org/)
 
-## Run project locally
-```bash
-$ yarn start
-#or
-$ npm start
-```
-
-## Build
-```bash
-$ yarn build
-#or
-$ npm build
-```
+This is a [Lerna](https://lerna.js.org/) monorepo. All components of the project are available in `packages/` directory. Each package has its own readme.

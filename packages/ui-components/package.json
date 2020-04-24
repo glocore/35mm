@@ -1,0 +1,26 @@
+{
+  "name": "@35mm/ui-components",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "tsc": "tsc",
+    "storybook-web": "start-storybook"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "babel-loader": "^8.1.0",
+    "ts-loader": "^7.0.1"
+  },
+  "dependencies": {
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^5.3.18",
+    "@types/react": "^16.9.34",
+    "babel-loader": "^8.1.0",
+    "fork-ts-checker-webpack-plugin": "^4.1.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "ts-loader": "^7.0.1"
+  }
+}
