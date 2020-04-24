@@ -7,16 +7,28 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "format": "prettier . --write"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@storybook/react": "^5.3.18",
+    "husky": "^4.2.5",
     "lerna": "^3.20.2",
+    "lint-staged": "^10.1.7",
+    "prettier": "2.0.5",
     "typescript": "^3.8.3"
   },
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
